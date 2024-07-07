@@ -1,6 +1,17 @@
 import React from "react"
 
-const DetailsCollectionForm = ({ handleSubmit, handleChange, formData }) => {
+const DetailsCollectionForm = ({
+  handleSubmit,
+  setDetailsCollectionData,
+  detailsCollectionData,
+}) => {
+  const handleChange = (e) => {
+    setDetailsCollectionData({
+      ...detailsCollectionData,
+      [e.target.name]: e.target.value,
+    })
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="mb-4">
@@ -15,7 +26,7 @@ const DetailsCollectionForm = ({ handleSubmit, handleChange, formData }) => {
           id="name"
           name="name"
           placeholder="Enter your name"
-          value={formData.name}
+          value={detailsCollectionData.name}
           onChange={handleChange}
           className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-[#C3C3C3]"
           required
@@ -33,7 +44,7 @@ const DetailsCollectionForm = ({ handleSubmit, handleChange, formData }) => {
           id="email"
           name="email"
           placeholder="Example - userid@gmail.com"
-          value={formData.email}
+          value={detailsCollectionData.email}
           onChange={handleChange}
           className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-[#C3C3C3]"
           required
@@ -50,7 +61,7 @@ const DetailsCollectionForm = ({ handleSubmit, handleChange, formData }) => {
           type="date"
           id="date"
           name="date"
-          value={formData.date}
+          value={detailsCollectionData.date}
           onChange={handleChange}
           className="mt-1 p-2 w-[200px] border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
           required
@@ -69,7 +80,7 @@ const DetailsCollectionForm = ({ handleSubmit, handleChange, formData }) => {
           id="contactNumber"
           placeholder="Enter your 10 digit contact no"
           name="contactNumber"
-          value={formData.contactNumber}
+          value={detailsCollectionData.contactNumber}
           onChange={handleChange}
           className="mt-1 p-2 w-full border placeholder:text-[#C3C3C3] border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
           required

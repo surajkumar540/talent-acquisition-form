@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import FormHeader from "./FormHeader"
 import DetailsCollectionForm from "./DetailsCollectionForm"
+import DocumentCollectionForm from "./DocumentCollectionForm"
 
 const FormContent = ({ active }) => {
   const [detailsCollectionData, setDetailsCollectionData] = useState({
@@ -10,12 +11,17 @@ const FormContent = ({ active }) => {
     contactNumber: "",
   })
 
-  const handleChange = (e) => {
-    setDetailsCollectionData({
-      ...detailsCollectionData,
-      [e.target.name]: e.target.value,
-    })
-  }
+  const [files, setFiles] = useState({
+    tenthMarksheet: null,
+    twelfthMarksheet: null,
+    graduationMarksheet: null,
+    postGraduationMarksheet: null,
+    offerLetter: null,
+    salarySlips: null,
+    bankStatement: null,
+    incrementLetter: null,
+    others: null,
+  })
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -30,6 +36,24 @@ const FormContent = ({ active }) => {
     })
   }
 
+  const handleSubmitForm = (e) => {
+    e.preventDefault()
+    // Handle form submission logic here
+    console.log(files)
+    // Reset files after submission if needed
+    setFiles({
+      tenthMarksheet: null,
+      twelfthMarksheet: null,
+      graduationMarksheet: null,
+      postGraduationMarksheet: null,
+      offerLetter: null,
+      salarySlips: null,
+      bankStatement: null,
+      incrementLetter: null,
+      others: null,
+    })
+  }
+
   return (
     <main className="flex-grow bg-[#F5F5F5] p-[95px]">
       <FormHeader />
@@ -37,8 +61,16 @@ const FormContent = ({ active }) => {
         {active === 1 && (
           <DetailsCollectionForm
             handleSubmit={handleSubmit}
-            formData={detailsCollectionData}
-            handleChange={handleChange}
+            setDetailsCollectionData={setDetailsCollectionData}
+            detailsCollectionData={detailsCollectionData}
+          />
+        )}
+        {active === 2 && (
+          <DocumentCollectionForm
+            files={files}
+            setFiles={setFiles}
+            handleSubmit={handleSubmit}
+            formData={files}
           />
         )}
       </div>
