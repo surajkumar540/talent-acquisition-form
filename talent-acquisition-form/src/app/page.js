@@ -12,7 +12,7 @@ export default function Home() {
 
         <div className="flex flex-grow ">
           {/* sidebar */}
-          <aside className=" h-full hidden md:block p-10 ">
+          <aside className=" h-full w-[450px] lg:flex justify-center items-center hidden md:block p-10 ">
             <Sidebar />
           </aside>
 
