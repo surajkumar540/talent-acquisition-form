@@ -6,17 +6,18 @@ import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
 
 const MainContent = () => {
-  const [active, setActive] = useState()
+  const [active, setActive] = useState(0)
   // handle active state for sidebar item
   const handleActive = (id) => {
     setActive(id)
   }
+  
   return (
     <>
       <Header />
-      <Sidebar active={active} handleActive={handleActive} />
-      <FormContent active={active} />
-      <Footer />
+      <Sidebar active={active} setActive={setActive} handleActive={handleActive} />
+      <FormContent active={active} setActive={setActive}/>
+      {/* <Footer setActive={setActive} active={active}  /> */}
     </>
   )
 }

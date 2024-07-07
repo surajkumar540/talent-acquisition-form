@@ -146,7 +146,7 @@ const InterviewAvailabilityForm = ({
           onChange={handleChange}
           className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-[#C3C3C3]"
         >
-          <option value="" disabled>
+          <option className="text-[#C5C5C5] text-[14px]" value="" disabled>
             Select interview medium
           </option>
           <option value="In-person">In-person</option>

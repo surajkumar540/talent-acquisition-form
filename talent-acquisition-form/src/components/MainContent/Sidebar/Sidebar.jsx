@@ -27,12 +27,13 @@ const formBtnData = [
   },
 ]
 
-const Sidebar = ({ active, handleActive }) => {
+const Sidebar = ({ active, setActive, handleActive }) => {
   return (
     <aside className=" h-full w-[450px] lg:flex my-10 *:justify-center items-center hidden md:block p-10 ">
       <div className="flex flex-col gap-4">
         <div
-          className={`h-[118px] w-[350px] border-[1px] border-[#888888] bg-white  rounded-[8px] p-[24px] flex justify-center items-center gap-[16px]`}
+          className={`h-[118px] w-[350px] border-[1px] border-[#888888] bg-white  rounded-[8px] p-[24px] flex justify-center items-center gap-[16px] cursor-pointer`}
+          onClick={() => setActive(1)}
         >
           <div
             className={`h-[70px] w-[100px] bg-[#D8D8D8] rounded-[4px] `}
