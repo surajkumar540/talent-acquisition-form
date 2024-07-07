@@ -3,6 +3,7 @@ import FormHeader from "./FormHeader"
 import DetailsCollectionForm from "./DetailsCollectionForm"
 import DocumentCollectionForm from "./DocumentCollectionForm"
 import StatementPurposeForm from "./StatementPurposeForm"
+import InterviewAvailabilityForm from "./InterviewAvailabilityForm"
 
 const FormContent = ({ active }) => {
   const [detailsCollectionData, setDetailsCollectionData] = useState({
@@ -24,10 +25,19 @@ const FormContent = ({ active }) => {
     others: null,
   })
 
-  const [formData, setFormData] = useState({
+  const [statementPurposeData, setStatementPurposeData] = useState({
     firstQuestion: "",
     secondQuestion: "",
     thirdQuestion: "",
+  })
+
+  const [interviewData, setInterviewData] = useState({
+    email: "",
+    location: "",
+    interviewDate: "",
+    interviewTime: "",
+    timeZone: "",
+    interviewMedium: "",
   })
 
   const handleSubmit = (e) => {
@@ -93,9 +103,16 @@ const FormContent = ({ active }) => {
         )}
         {active === 3 && (
           <StatementPurposeForm
-            setFormData={setFormData}
+            setFormData={setStatementPurposeData}
             handleSubmit={handleSubmitQuestions}
-            formData={formData}
+            formData={statementPurposeData}
+          />
+        )}
+        {active === 4 && (
+          <InterviewAvailabilityForm
+          setInterviewData={setInterviewData}
+            handleSubmit={handleSubmitQuestions}
+            formData={interviewData}
           />
         )}
       </div>
