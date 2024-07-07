@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import FormHeader from "./FormHeader"
 import DetailsCollectionForm from "./DetailsCollectionForm"
 import DocumentCollectionForm from "./DocumentCollectionForm"
+import StatementPurposeForm from "./StatementPurposeForm"
 
 const FormContent = ({ active }) => {
   const [detailsCollectionData, setDetailsCollectionData] = useState({
@@ -23,6 +24,12 @@ const FormContent = ({ active }) => {
     others: null,
   })
 
+  const [formData, setFormData] = useState({
+    firstQuestion: "",
+    secondQuestion: "",
+    thirdQuestion: "",
+  })
+
   const handleSubmit = (e) => {
     e.preventDefault()
     // Handle form submission logic here
@@ -36,7 +43,7 @@ const FormContent = ({ active }) => {
     })
   }
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitFiles = (e) => {
     e.preventDefault()
     // Handle form submission logic here
     console.log(files)
@@ -51,6 +58,18 @@ const FormContent = ({ active }) => {
       bankStatement: null,
       incrementLetter: null,
       others: null,
+    })
+  }
+
+  const handleSubmitQuestions = (e) => {
+    e.preventDefault()
+    // Handle form submission logic here
+    console.log(formData)
+    // Reset form if needed
+    setFormData({
+      firstQuestion: "",
+      secondQuestion: "",
+      thirdQuestion: "",
     })
   }
 
@@ -69,8 +88,14 @@ const FormContent = ({ active }) => {
           <DocumentCollectionForm
             files={files}
             setFiles={setFiles}
-            handleSubmit={handleSubmit}
-            formData={files}
+            handleSubmit={handleSubmitFiles}
+          />
+        )}
+        {active === 3 && (
+          <StatementPurposeForm
+            setFormData={setFormData}
+            handleSubmit={handleSubmitQuestions}
+            formData={formData}
           />
         )}
       </div>
