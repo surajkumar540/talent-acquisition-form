@@ -104,9 +104,9 @@ const FormContent = ({ active, setActive }) => {
 
   return (
     <>
-      <main className="flex-grow bg-[#F5F5F5] p-[95px]">
+      <main className="flex-grow bg-[#F5F5F5] lg:p-[95px]">
         <FormHeader />
-        <div className={`${active && "py-[57px] px-[100px] bg-white"}  `}>
+        <div className={`${active && "lg:py-[57px] lg:px-[100px] bg-white"}  `}>
           {active === 1 && (
             <DetailsCollectionForm
               handleSubmit={handleDetailsCollection}
