@@ -1,8 +1,9 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Sidebar from "./Sidebar/Sidebar"
 import FormContent from "./FormContent/FormContent"
 import Header from "../Header/Header"
+import Footer from "../Footer/Footer"
 
 const MainContent = () => {
   const [active, setActive] = useState(0)
@@ -10,8 +11,6 @@ const MainContent = () => {
   const handleActive = (id) => {
     if (active > id) setActive(id)
   }
-
-  // Remove the isClient state variable and related logic
 
   return (
     <>

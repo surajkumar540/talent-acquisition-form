@@ -1,4 +1,3 @@
-"use client"
 import Footer from "@/components/Footer/Footer"
 import Image from "next/image"
 import React, { useState } from "react"
