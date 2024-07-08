@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer/Footer"
 import React from "react"
-import attachImg from "../../../../public/attachImg.svg"
+import attachImg from "../../../../public/attachimg.svg"
 import Image from "next/image"
 
 const DocumentCollectionForm = ({ handleSubmit, setFiles, files }) => {
