@@ -41,53 +41,40 @@ const FormContent = ({ active, setActive }) => {
     interviewMedium: "",
   })
 
+  // Details Collection Form Logic
   const handleDetailsCollection = (e) => {
     e.preventDefault()
     // Handle form submission logic here
-    // validation check
-    if (
-      !detailsCollectionData.name &&
-      !detailsCollectionData.email &&
-      !detailsCollectionData.date &&
-      !detailsCollectionData.contactNumber
-    ) {
-      alert("Please fill all the fields")
-      return
-    }
-
     setActive(active + 1)
-    // Reset form fields after submission if needed
+  }
+
+  // Document Collection Form Logic
+  const handleSubmitFiles = (e) => {
+    e.preventDefault()
+    // Handle form submission logic here
+    setActive(active + 1)
+  }
+
+  // Statement of Purpose Form Logic
+  const handleSubmitQuestions = (e) => {
+    e.preventDefault()
+    // Handle form submission logic here
+    setActive(active + 1)
+  }
+
+  // Interview Availability Form Logic
+  const handleInterviewAvailability = (e) => {
+    e.preventDefault()
+    // Handle form submission logic here
+    setActive(active + 1)
+
+    // reset all fields of form
     setDetailsCollectionData({
       name: "",
       email: "",
       date: "",
       contactNumber: "",
     })
-  }
-
-  const handleSubmitFiles = (e) => {
-    e.preventDefault()
-    // Handle form submission logic here
-
-    // validation check
-    if (
-      !files.tenthMarksheet &&
-      !files.twelfthMarksheet &&
-      !files.graduationMarksheet &&
-      !files.postGraduationMarksheet &&
-      !files.offerLetter &&
-      !files.salarySlips &&
-      !files.bankStatement &&
-      !files.incrementLetter &&
-      !files.others
-    ) {
-      alert("Please upload all the required files")
-      return
-    }
-
-    setActive(active + 1)
-
-    // Reset files after submission if needed
     setFiles({
       tenthMarksheet: null,
       twelfthMarksheet: null,
@@ -99,18 +86,20 @@ const FormContent = ({ active, setActive }) => {
       incrementLetter: null,
       others: null,
     })
-  }
-
-  const handleSubmitQuestions = (e) => {
-    e.preventDefault()
-    // Handle form submission logic here
-    console.log(formData)
-    // Reset form if needed
-    setFormData({
+    setStatementPurposeData({
       firstQuestion: "",
       secondQuestion: "",
       thirdQuestion: "",
     })
+    setInterviewData({
+      email: "",
+      location: "",
+      interviewDate: "",
+      interviewTime: "",
+      timeZone: "",
+      interviewMedium: "",
+    })
+    setActive(0)
   }
 
   return (
@@ -142,7 +131,7 @@ const FormContent = ({ active, setActive }) => {
           {active === 4 && (
             <InterviewAvailabilityForm
               setInterviewData={setInterviewData}
-              handleSubmit={handleSubmitQuestions}
+              handleSubmit={handleInterviewAvailability}
               formData={interviewData}
             />
           )}

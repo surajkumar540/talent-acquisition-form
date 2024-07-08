@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer/Footer"
 import React from "react"
 
 const StatementPurposeForm = ({ handleSubmit, setFormData, formData }) => {
@@ -21,6 +22,7 @@ const StatementPurposeForm = ({ handleSubmit, setFormData, formData }) => {
         <textarea
           name="firstQuestion"
           value={formData.firstQuestion}
+          required
           onChange={handleChange}
           placeholder="Enter a description for the long answer"
           className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 resize-none h-[68px]"
@@ -38,6 +40,7 @@ const StatementPurposeForm = ({ handleSubmit, setFormData, formData }) => {
         <textarea
           name="secondQuestion"
           value={formData.secondQuestion}
+          required
           onChange={handleChange}
           placeholder="Enter a description for the long answer"
           className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 resize-none h-[68px]"
@@ -54,6 +57,7 @@ const StatementPurposeForm = ({ handleSubmit, setFormData, formData }) => {
         <textarea
           name="thirdQuestion"
           value={formData.thirdQuestion}
+          required
           onChange={handleChange}
           placeholder="Enter a description for the long answer"
           className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 resize-none h-[68px]"
@@ -63,6 +67,7 @@ const StatementPurposeForm = ({ handleSubmit, setFormData, formData }) => {
           {301 - formData.thirdQuestion.split(" ").length} word limit
         </p>
       </div>
+      <Footer />
     </form>
   )
 }

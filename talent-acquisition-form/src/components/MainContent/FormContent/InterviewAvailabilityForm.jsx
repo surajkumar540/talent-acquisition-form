@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer/Footer"
 import React from "react"
 
 const InterviewAvailabilityForm = ({
@@ -14,7 +15,7 @@ const InterviewAvailabilityForm = ({
   }
 
   return (
-    <form className="space-y-4 p-4 bg-white  rounded">
+    <form className="space-y-4 p-4 bg-white  rounded" onSubmit={handleSubmit}>
       <div>
         <label
           htmlFor="email"
@@ -44,6 +45,7 @@ const InterviewAvailabilityForm = ({
         <input
           type="text"
           name="location"
+          required
           id="location"
           placeholder="Search or enter your location "
           value={formData.location}
@@ -62,6 +64,7 @@ const InterviewAvailabilityForm = ({
         <input
           type="date"
           name="interviewDate"
+          required
           id="interviewDate"
           value={formData.interviewDate}
           onChange={handleChange}
@@ -78,6 +81,7 @@ const InterviewAvailabilityForm = ({
         </label>
         <input
           type="time"
+          required
           name="interviewTime"
           id="interviewTime"
           value={formData.interviewTime}
@@ -96,6 +100,7 @@ const InterviewAvailabilityForm = ({
         <select
           name="timeZone"
           id="timeZone"
+          required
           value={formData.timeZone}
           onChange={handleChange}
           className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-[#C3C3C3]"
@@ -140,6 +145,7 @@ const InterviewAvailabilityForm = ({
           below)
         </label>
         <select
+          required
           name="interviewMedium"
           id="interviewMedium"
           value={formData.interviewMedium}
@@ -154,6 +160,7 @@ const InterviewAvailabilityForm = ({
           <option value="Video">Video</option>
         </select>
       </div>
+      <Footer />
     </form>
   )
 }
