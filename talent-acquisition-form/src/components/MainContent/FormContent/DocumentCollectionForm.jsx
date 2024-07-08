@@ -1,13 +1,8 @@
 import Footer from "@/components/Footer/Footer"
 import React from "react"
-{
-  /* <input
-type="file"
-name={name}
-onChange={handleFileChange}
-className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-/> */
-}
+import attachImg from "../../../../public/attachImg.svg"
+import Image from "next/image"
+
 const DocumentCollectionForm = ({ handleSubmit, setFiles, files }) => {
   const handleFileChange = (e) => {
     e.stopPropagation()
@@ -46,7 +41,14 @@ const DocumentCollectionForm = ({ handleSubmit, setFiles, files }) => {
               }  w-full  border border-gray-300 text-[14px] rounded-md focus:ring-1 focus:ring-blue-500 top-6 left-[5px] cursor-pointer`}
             >
               <div></div>
-              {files[name] ? files[name]?.name : "Attach up to 50KB"}
+              {/*attach img  */}
+              <div className="flex items-center gap-2">
+                <div>
+                  <Image src={attachImg} alt="Attach" />
+                </div>
+
+                {files[name] ? files[name]?.name : "Attach up to 50KB"}
+              </div>
             </div>
             <input
               type="file"
