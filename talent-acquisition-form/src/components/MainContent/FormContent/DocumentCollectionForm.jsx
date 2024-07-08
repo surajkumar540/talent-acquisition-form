@@ -7,11 +7,7 @@ onChange={handleFileChange}
 className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
 /> */
 }
-const DocumentCollectionForm = ({
-  handleSubmit,
-  setFiles,
-  files,
-}) => {
+const DocumentCollectionForm = ({ handleSubmit, setFiles, files }) => {
   const handleFileChange = (e) => {
     e.stopPropagation()
     const { name, files: selectedFiles } = e.target
@@ -43,18 +39,20 @@ const DocumentCollectionForm = ({
             <label className="block text-sm font-medium text-gray-700 w-full relative">
               {label}
             </label>
+            <div
+              className={`absolute focus:outline-none p-2 ${
+                !files[name] && "text-[#C5C5C5]"
+              }  w-full  border border-gray-300 text-[14px] rounded-md focus:ring-1 focus:ring-blue-500 top-6 left-[5px] cursor-pointer`}
+            >
+              <div></div>
+              {files[name] ? files[name]?.name : "Attach up to 50KB"}
+            </div>
             <input
               type="file"
               name={name}
-              className=" p-2 w-[186px]  opacity-0"
-            />
-            <div
-              className="absolute focus:outline-none p-2 text-[#C5C5C5] w-full border border-gray-300 text-[14px] rounded-md  focus:ring-1 focus:ring-blue-500 top-6 left-[5px]"
+              className=" p-2 w-[186px]  opacity-0 z-50  "
               onChange={handleFileChange}
-            >
-              <div></div>
-              Attach file upto 5kb
-            </div>
+            />
           </div>
         </div>
       ))}
