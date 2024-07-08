@@ -6,6 +6,12 @@ const DetailsCollectionForm = ({
   detailsCollectionData,
 }) => {
   const handleChange = (e) => {
+    // contact number 10 number limit
+    if (e.target.name === "contactNumber") {
+      if (e.target.value.length > 10) {
+        return
+      }
+    }
     setDetailsCollectionData({
       ...detailsCollectionData,
       [e.target.name]: e.target.value,
