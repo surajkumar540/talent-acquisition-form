@@ -4,7 +4,7 @@ import React from "react"
 const StatementPurposeForm = ({ handleSubmit, setFormData, formData }) => {
   const handleChange = (e) => {
     const { name, value } = e.target
-    if (value.split(" ").length <= 300) {
+    if (value.length <= 300) {
       setFormData((prevFormData) => ({
         ...prevFormData,
         [name]: value,
@@ -29,7 +29,7 @@ const StatementPurposeForm = ({ handleSubmit, setFormData, formData }) => {
           rows="5"
         />
         <p className="text-[#8A8A8A] text-sm w-full text-end text-[10px] mt-1">
-          {301 - formData.firstQuestion.split(" ").length} word limit
+          {formData.firstQuestion.length}/300 word limit
         </p>
       </div>
       <div className="mb-6">
@@ -47,7 +47,7 @@ const StatementPurposeForm = ({ handleSubmit, setFormData, formData }) => {
           rows="5"
         />
         <p className="text-[#8A8A8A] text-sm w-full text-end text-[10px] mt-1">
-          {301 - formData.secondQuestion.split(" ").length} word limit
+          {formData.secondQuestion.length}/300 word limit
         </p>
       </div>
       <div className="mb-6">
@@ -64,7 +64,7 @@ const StatementPurposeForm = ({ handleSubmit, setFormData, formData }) => {
           rows="5"
         />
         <p className="text-[#8A8A8A] text-sm w-full text-end text-[10px] mt-1">
-          {301 - formData.thirdQuestion.split(" ").length} word limit
+          {formData.thirdQuestion.length}/300 word limit
         </p>
       </div>
       <Footer />
