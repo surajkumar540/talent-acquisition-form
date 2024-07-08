@@ -68,7 +68,25 @@ const FormContent = ({ active, setActive }) => {
   const handleSubmitFiles = (e) => {
     e.preventDefault()
     // Handle form submission logic here
-    console.log(files)
+
+    // validation check
+    if (
+      !files.tenthMarksheet &&
+      !files.twelfthMarksheet &&
+      !files.graduationMarksheet &&
+      !files.postGraduationMarksheet &&
+      !files.offerLetter &&
+      !files.salarySlips &&
+      !files.bankStatement &&
+      !files.incrementLetter &&
+      !files.others
+    ) {
+      alert("Please upload all the required files")
+      return
+    }
+
+    setActive(active + 1)
+
     // Reset files after submission if needed
     setFiles({
       tenthMarksheet: null,

@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer/Footer"
 import React from "react"
 {
   /* <input
@@ -52,10 +53,12 @@ const DocumentCollectionForm = ({ handleSubmit, setFiles, files }) => {
               name={name}
               className=" p-2 w-[186px]  opacity-0 z-50  "
               onChange={handleFileChange}
+              required
             />
           </div>
         </div>
       ))}
+      <Footer />
     </form>
   )
 }
