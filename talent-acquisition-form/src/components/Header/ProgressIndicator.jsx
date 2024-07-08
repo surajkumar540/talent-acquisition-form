@@ -13,12 +13,12 @@ const ProgressIndicator = ({ active, setActive }) => {
   ]
 
   return (
-    <div className="flex space-x-4   w-full">
-      <div className="flex w-[100%] items-center justify-center ">
+    <div className="flex   w-full">
+      <div className="flex w-[100%] items-center justify-center md:px-4 ">
         {steps.map((step, index) => (
           <div key={index} className="flex items-center">
             <div
-              className={`w-8 h-8 flex items-center justify-center rounded-full ${
+              className={`w-4 md:w-8 h-4 md:h-8 flex items-center justify-center rounded-full ${
                 index < active ? "bg-[#1A8FE6]" : " border-2 border-gray-300"
               }`}
             >
@@ -28,16 +28,16 @@ const ProgressIndicator = ({ active, setActive }) => {
                 <div className="w-4 h-4 " />
               )}
             </div>
-            <p className="ml-2 text-black">{step.label}</p>
+            <p className="ml-2 text-black hidden lg:block">{step.label}</p>
             {index !== steps.length - 1 && (
-              <div className="w-[130px] mx-4 h-[2px] bg-[#C3C3C3]"></div>
+              <div className="w-[50px] md:w-[90px] lg:w-[130px] lg:mx-4 h-[2px] bg-[#C3C3C3]"></div>
             )}
           </div>
         ))}
 
         {/* cross  */}
         <div
-          className=" pl-32 font-semibold cursor-pointer text-[#343434]"
+          className=" pl-10  md:pl-32 font-semibold cursor-pointer text-[#343434]"
           onClick={() => {
             setActive(0)
           }}

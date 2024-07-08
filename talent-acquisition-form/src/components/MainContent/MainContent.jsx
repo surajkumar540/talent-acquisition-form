@@ -21,7 +21,6 @@ const MainContent = () => {
         handleActive={handleActive}
       />
       <FormContent active={active} setActive={setActive} />
-      {/* <Footer setActive={setActive} active={active}  /> */}
     </>
   )
 }
