@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer/Footer"
+import Header from "@/components/Header/Header"
 import React from "react"
 
 const DetailsCollectionForm = ({
@@ -83,7 +84,7 @@ const DetailsCollectionForm = ({
           4. Contact no
         </label>
         <input
-          type="tel"
+          type="number"
           id="contactNumber"
           placeholder="Enter your 10 digit contact no"
           name="contactNumber"
