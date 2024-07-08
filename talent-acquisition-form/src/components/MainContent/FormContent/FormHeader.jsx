@@ -10,7 +10,7 @@ const FormHeader = () => {
         </p>
       </div>
       <div
-        className="h-[150px] p-[36px]"
+        className="lg:h-[150px] p-5 lg:p-[36px]"
         style={{ backgroundColor: "rgba(26, 143, 230, 0.15)" }}
       >
         <h2 className="text-[20px]">Name of the Enquiry Form</h2>

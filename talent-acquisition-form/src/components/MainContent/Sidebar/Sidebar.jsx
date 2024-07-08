@@ -29,10 +29,10 @@ const formBtnData = [
 
 const Sidebar = ({ active, setActive, handleActive }) => {
   return (
-    <aside className=" h-full w-[200px]  lg:w-[450px] lg:flex mt-20 md:mt-2 lg:my-10 *:justify-center items-center p-4 sm:p-10  ">
+    <aside className=" h-full w-[200px]  lg:w-[450px] lg:flex mt-20 md:mt-12 lg:my-10 *:justify-center items-center p-4 sm:p-10  ">
       <div className="flex flex-col gap-4">
         <div
-          className={`lg:h-[118px]  lg:w-[350px] border-[1px] border-[#888888] bg-white  rounded-[8px] p-[24px] lg:flex justify-center items-center gap-[16px] cursor-pointer`}
+          className={`h-[100px] lg:h-[118px]  lg:w-[350px] border-[1px] border-[#888888] bg-white  rounded-[8px] p-[24px] lg:flex justify-center items-center gap-[16px] cursor-pointer`}
           onClick={() => setActive(1)}
         >
           <div
@@ -47,7 +47,7 @@ const Sidebar = ({ active, setActive, handleActive }) => {
           </div>
         </div>
 
-        <div className="mt-4 text-[12px] md:text-[20px]">
+        <div className="mt-4 text-sm md:text-[14px]">
           Explore the following Templates:
         </div>
 

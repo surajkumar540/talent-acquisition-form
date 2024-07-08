@@ -23,7 +23,7 @@ const DocumentCollectionForm = ({ handleSubmit, setFiles, files }) => {
     }))
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="pb-10">
       {[
         { label: "10th Marksheet*", name: "tenthMarksheet" },
         { label: "12th Marksheet*", name: "twelfthMarksheet" },

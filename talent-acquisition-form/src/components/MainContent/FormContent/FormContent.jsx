@@ -32,6 +32,8 @@ const FormContent = ({ active, setActive }) => {
     thirdQuestion: "",
   })
 
+  
+
   const [interviewData, setInterviewData] = useState({
     email: "",
     location: "",
@@ -40,6 +42,8 @@ const FormContent = ({ active, setActive }) => {
     timeZone: "",
     interviewMedium: "",
   })
+
+  
 
   // Details Collection Form Logic
   const handleDetailsCollection = (e) => {
@@ -65,6 +69,8 @@ const FormContent = ({ active, setActive }) => {
   // Interview Availability Form Logic
   const handleInterviewAvailability = (e) => {
     e.preventDefault()
+   
+
     // Handle form submission logic here
     setActive(active + 1)
 
@@ -104,9 +110,9 @@ const FormContent = ({ active, setActive }) => {
 
   return (
     <>
-      <main className="flex-grow bg-[#F5F5F5] lg:p-[95px]">
+      <main className="flex-grow bg-[#F5F5F5] pt-20 px-4 sm:px-10 lg:p-[95px]">
         <FormHeader />
-        <div className={`${active && "lg:py-[57px] lg:px-[100px] bg-white"}  `}>
+        <div className={`${active && " px-4 py-10 lg:py-[57px] lg:px-[100px] bg-white"}  `}>
           {active === 1 && (
             <DetailsCollectionForm
               handleSubmit={handleDetailsCollection}
@@ -133,6 +139,8 @@ const FormContent = ({ active, setActive }) => {
               setInterviewData={setInterviewData}
               handleSubmit={handleInterviewAvailability}
               formData={interviewData}
+              suggestions={suggestions}
+              handleSuggestionClick={handleSuggestionClick}
             />
           )}
         </div>
