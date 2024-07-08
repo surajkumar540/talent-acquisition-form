@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer/Footer"
 import React from "react"
 
 const DetailsCollectionForm = ({
@@ -6,6 +7,12 @@ const DetailsCollectionForm = ({
   detailsCollectionData,
 }) => {
   const handleChange = (e) => {
+    // contact number 10 number limit
+    if (e.target.name === "contactNumber") {
+      if (e.target.value.length > 10) {
+        return
+      }
+    }
     setDetailsCollectionData({
       ...detailsCollectionData,
       [e.target.name]: e.target.value,
@@ -86,6 +93,7 @@ const DetailsCollectionForm = ({
           required
         />
       </div>
+      <Footer />
     </form>
   )
 }
