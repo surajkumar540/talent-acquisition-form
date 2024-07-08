@@ -139,8 +139,6 @@ const FormContent = ({ active, setActive }) => {
               setInterviewData={setInterviewData}
               handleSubmit={handleInterviewAvailability}
               formData={interviewData}
-              suggestions={suggestions}
-              handleSuggestionClick={handleSuggestionClick}
             />
           )}
         </div>

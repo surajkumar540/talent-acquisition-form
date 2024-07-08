@@ -43,10 +43,11 @@ const DocumentCollectionForm = ({ handleSubmit, setFiles, files }) => {
               <div></div>
               {/*attach img  */}
               <div className="flex items-center gap-2">
-                <div>
-                  <Image src={attachImg} alt="Attach" />
-                </div>
-
+                {!files[name] && (
+                  <div>
+                    <Image src={attachImg} alt="Attach" />
+                  </div>
+                )}
                 {files[name] ? files[name]?.name : "Attach up to 50KB"}
               </div>
             </div>

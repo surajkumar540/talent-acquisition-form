@@ -1,47 +1,46 @@
-import Footer from "@/components/Footer/Footer"
-import React from "react"
+import Footer from "@/components/Footer/Footer";
+import React, { useState } from "react";
 
 const InterviewAvailabilityForm = ({
   handleSubmit,
   formData,
   setInterviewData,
 }) => {
-  const [location, setLocation] = useState("")
-  const [suggestions, setSuggestions] = useState([])
+  const [location, setLocation] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
 
-    setLocation(value)
+    if (name === "location") {
+      setLocation(value);
 
-    // Example: Fetch suggestions based on input value
-    // You can fetch suggestions from an API or use a predefined list
-    // For simplicity, using a predefined list here
-    const locations = ["Delhi", "Mumbai", "Kashmir", "Bangalore", "Chennai"]
-    const filteredSuggestions = locations.filter((loc) =>
-      loc.toLowerCase().includes(value.toLowerCase())
-    )
-    setSuggestions(filteredSuggestions)
+      const locations = ["Delhi", "Mumbai", "Kashmir", "Bangalore", "Chennai"];
+      const filteredSuggestions = locations.filter((loc) =>
+        loc.toLowerCase().includes(value.toLowerCase())
+      );
+      setSuggestions(filteredSuggestions);
+    }
 
     setInterviewData({
       ...formData,
       [name]: value,
-    })
-  }
+    });
+  };
 
-  // Function to handle suggestion selection
   const handleSuggestionClick = (selectedLocation) => {
-    setLocation(selectedLocation)
-    setSuggestions([])
-  }
+    setLocation(selectedLocation);
+    setSuggestions([]);
+    setInterviewData({
+      ...formData,
+      location: selectedLocation,
+    });
+  };
 
   return (
-    <form className="space-y-4 p-4 bg-white  rounded" onSubmit={handleSubmit}>
+    <form className="space-y-4 p-4 bg-white rounded" onSubmit={handleSubmit}>
       <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-gray-700"
-        >
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
           1. Email*
         </label>
         <input
@@ -56,22 +55,19 @@ const InterviewAvailabilityForm = ({
         />
       </div>
 
-      <div>
-        <label
-          htmlFor="location"
-          className="block text-sm font-medium text-gray-700"
-        >
+      <div className="relative">
+        <label htmlFor="location" className="block text-sm font-medium text-gray-700">
           2. Location (Search or enter your location)
         </label>
         <input
           type="text"
           name="location"
-          required
           id="location"
-          placeholder="Search or enter your location "
-          value={formData.location}
+          placeholder="Search or enter your location"
+          value={location}
           onChange={handleChange}
           className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-[#C3C3C3]"
+          required
         />
         {suggestions.length > 0 && (
           <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1">
@@ -89,55 +85,46 @@ const InterviewAvailabilityForm = ({
       </div>
 
       <div>
-        <label
-          htmlFor="interviewDate"
-          className="block text-sm font-medium text-gray-700"
-        >
+        <label htmlFor="interviewDate" className="block text-sm font-medium text-gray-700">
           3. Interview Date
         </label>
         <input
           type="date"
           name="interviewDate"
-          required
           id="interviewDate"
           value={formData.interviewDate}
           onChange={handleChange}
           className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-[#C3C3C3]"
+          required
         />
       </div>
 
       <div>
-        <label
-          htmlFor="interviewTime"
-          className="block text-sm font-medium text-gray-700"
-        >
+        <label htmlFor="interviewTime" className="block text-sm font-medium text-gray-700">
           4. Interview Time (Search or Select a time zone from below)
         </label>
         <input
           type="time"
-          required
           name="interviewTime"
           id="interviewTime"
           value={formData.interviewTime}
           onChange={handleChange}
           className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-[#C3C3C3]"
+          required
         />
       </div>
 
       <div>
-        <label
-          htmlFor="timeZone"
-          className="block text-sm font-medium text-gray-700"
-        >
+        <label htmlFor="timeZone" className="block text-sm font-medium text-gray-700">
           5. Time Zone
         </label>
         <select
           name="timeZone"
           id="timeZone"
-          required
           value={formData.timeZone}
           onChange={handleChange}
           className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-[#C3C3C3]"
+          required
         >
           <option value="" disabled>
             Select your time zone
@@ -171,20 +158,16 @@ const InterviewAvailabilityForm = ({
       </div>
 
       <div>
-        <label
-          htmlFor="interviewMedium"
-          className="block text-sm font-medium text-gray-700"
-        >
-          6. Interview Medium (Search or Select the medium of Interview from
-          below)
+        <label htmlFor="interviewMedium" className="block text-sm font-medium text-gray-700">
+          6. Interview Medium (Search or Select the medium of Interview from below)
         </label>
         <select
-          required
           name="interviewMedium"
           id="interviewMedium"
           value={formData.interviewMedium}
           onChange={handleChange}
           className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-[#C3C3C3]"
+          required
         >
           <option className="text-[#C5C5C5] text-[14px]" value="" disabled>
             Select interview medium
@@ -196,7 +179,7 @@ const InterviewAvailabilityForm = ({
       </div>
       <Footer />
     </form>
-  )
-}
+  );
+};
 
-export default InterviewAvailabilityForm
+export default InterviewAvailabilityForm;
