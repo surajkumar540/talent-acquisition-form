@@ -9,14 +9,18 @@ const MainContent = () => {
   const [active, setActive] = useState(0)
   // handle active state for sidebar item
   const handleActive = (id) => {
-    setActive(id)
+    if (active > id) setActive(id)
   }
-  
+
   return (
     <>
       <Header />
-      <Sidebar active={active} setActive={setActive} handleActive={handleActive} />
-      <FormContent active={active} setActive={setActive}/>
+      <Sidebar
+        active={active}
+        setActive={setActive}
+        handleActive={handleActive}
+      />
+      <FormContent active={active} setActive={setActive} />
       {/* <Footer setActive={setActive} active={active}  /> */}
     </>
   )
