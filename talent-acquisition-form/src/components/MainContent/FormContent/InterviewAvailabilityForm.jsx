@@ -1,17 +1,40 @@
 import Footer from "@/components/Footer/Footer"
-import React from "react"
+import Image from "next/image"
+import React, { useState } from "react"
+import searchImg from "../../../../public/searchimg.svg"
 
 const InterviewAvailabilityForm = ({
   handleSubmit,
   formData,
   setInterviewData,
 }) => {
+  const [location, setLocation] = useState("")
+  const [suggestions, setSuggestions] = useState([])
+
   const handleChange = (e) => {
     const { name, value } = e.target
+
+    setLocation(value)
+
+    // Example: Fetch suggestions based on input value
+    // You can fetch suggestions from an API or use a predefined list
+    // For simplicity, using a predefined list here
+    const locations = ["Delhi", "Mumbai", "Kashmir", "Bangalore", "Chennai"]
+    const filteredSuggestions = locations.filter((loc) =>
+      loc.toLowerCase().includes(value.toLowerCase())
+    )
+    setSuggestions(filteredSuggestions)
+
     setInterviewData({
       ...formData,
       [name]: value,
     })
+  }
+
+  // Function to handle suggestion selection
+  const handleSuggestionClick = (selectedLocation) => {
+    setLocation(selectedLocation)
+    setSuggestions([])
   }
 
   return (
@@ -42,16 +65,36 @@ const InterviewAvailabilityForm = ({
         >
           2. Location (Search or enter your location)
         </label>
-        <input
-          type="text"
-          name="location"
-          required
-          id="location"
-          placeholder="Search or enter your location "
-          value={formData.location}
-          onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-[#C3C3C3]"
-        />
+        <div className="relative">
+          <input
+            type="text"
+            name="location"
+            required
+            id="location"
+            placeholder="Search or enter your location "
+            value={formData.location}
+            onChange={handleChange}
+            className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 pl-7 focus:ring-blue-500 placeholder:text-[#C3C3C3]"
+          />
+
+          <div className="absolute top-4 left-2">
+            <Image src={searchImg} alt="Attach" />
+          </div>
+        </div>
+
+        {suggestions.length > 0 && (
+          <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1">
+            {suggestions.map((suggest, index) => (
+              <li
+                key={index}
+                onClick={() => handleSuggestionClick(suggest)}
+                className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+              >
+                {suggest}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div>

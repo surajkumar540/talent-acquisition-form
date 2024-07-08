@@ -14,14 +14,13 @@ const MainContent = () => {
 
   return (
     <>
-      <Header />
+      {active > 0 && <Header setActive={setActive} active={active} />}
       <Sidebar
         active={active}
         setActive={setActive}
         handleActive={handleActive}
       />
       <FormContent active={active} setActive={setActive} />
-      {/* <Footer setActive={setActive} active={active}  /> */}
     </>
   )
 }

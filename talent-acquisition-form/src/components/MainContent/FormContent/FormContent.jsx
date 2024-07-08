@@ -5,6 +5,7 @@ import DocumentCollectionForm from "./DocumentCollectionForm"
 import StatementPurposeForm from "./StatementPurposeForm"
 import InterviewAvailabilityForm from "./InterviewAvailabilityForm"
 import Footer from "@/components/Footer/Footer"
+import Submitted from "./Submitted"
 
 const FormContent = ({ active, setActive }) => {
   const [detailsCollectionData, setDetailsCollectionData] = useState({
@@ -65,6 +66,7 @@ const FormContent = ({ active, setActive }) => {
   // Interview Availability Form Logic
   const handleInterviewAvailability = (e) => {
     e.preventDefault()
+
     // Handle form submission logic here
     setActive(active + 1)
 
@@ -99,14 +101,22 @@ const FormContent = ({ active, setActive }) => {
       timeZone: "",
       interviewMedium: "",
     })
-    setActive(0)
+    setActive(active + 1)
+    // after 3 second setActive is
+    setTimeout(() => {
+      setActive(0)
+    }, 3000)
   }
 
   return (
     <>
-      <main className="flex-grow bg-[#F5F5F5] p-[95px]">
+      <main className="flex-grow bg-[#F5F5F5] pt-20 px-4 sm:px-10 lg:p-[95px]">
         <FormHeader />
-        <div className={`${active && "py-[57px] px-[100px] bg-white"}  `}>
+        <div
+          className={`${
+            active && " px-4 py-10 lg:py-[57px] lg:px-[100px] bg-white"
+          }  `}
+        >
           {active === 1 && (
             <DetailsCollectionForm
               handleSubmit={handleDetailsCollection}
@@ -135,6 +145,7 @@ const FormContent = ({ active, setActive }) => {
               formData={interviewData}
             />
           )}
+          {active === 5 && <Submitted />}
         </div>
       </main>
     </>
